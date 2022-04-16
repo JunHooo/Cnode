@@ -27,7 +27,7 @@ name: "Header"
 
 <style lang="scss" scoped>
   .nav{
-    position: fixed;
+    position: relative;
     top:0;
     left:0;
     width: 100%;
@@ -38,7 +38,7 @@ name: "Header"
     height: 50px;
 
     .container{
-      position: fixed;
+      position: absolute;
       color:#cccccc;
       font-size: 13px;
       right:5%;

@@ -18,7 +18,14 @@
           {{post | getType}}
         </span>
         <div class="text">
-          <a href="" :title="post.title">{{post.title}}</a>
+          <router-link :to="{
+            name:'Article',
+            params:{
+              id:post.id
+            }
+          }">
+            <a href="" :title="post.title">{{post.title}}</a>
+          </router-link>
         </div>
         <span class="time">{{post.last_reply_at | getDate}}</span>
       </li>
@@ -46,43 +53,6 @@ export default {
         }).catch(error=>{
           console.log(error);
         })
-    }
-  },
-  filters:{
-    getType(value){
-      if(value.top===true) {
-        value = '置顶'
-      }
-      else if (value.good ===true ) {
-        value='精品'
-      }else if(value.tab==='share'){
-        value='分享'
-      }else if(value.tab==='job'){
-        value='招聘'
-      }else if(value.tab==='ask'){
-        value='问答'
-      }
-      return value
-    },
-    getDate(date){
-      let now =new Date().getTime()
-      let lastDate =new Date(date).getTime()
-      let diff=(now-lastDate)/1000
-      let result;
-      if(diff<60){
-        result=Math.round(diff)+'秒之前'
-      }else if(diff<3600){
-        result=Math.round(diff/60)+'分之前'
-      }else if(diff<86400){
-        result=Math.round(diff/3600)+'小时前'
-      }else if(diff<2592000){
-        result=Math.round(diff/86400)+'天前'
-      }else if(diff<31104000){
-        result=Math.round(diff/2592000)+'月前'
-      }else{
-        result=Math.round(diff/31104000)+'年前'
-      }
-      return result
     }
   },
   beforeMount() {
@@ -119,6 +89,9 @@ export default {
       align-items: center;
       padding:10px 0 10px 10px;
       border-top: 1px solid #f0f0f0;
+      &:hover{
+        background: #f5f5f5
+      }
         a{
           position: relative;
           text-overflow: ellipsis;
@@ -130,7 +103,6 @@ export default {
           font-size: 16px;
           line-height: 30px;
           text-decoration: #333333;
-          border:1px solid red;
           &:hover{
             text-decoration:underline
           }
@@ -160,7 +132,7 @@ export default {
         justify-content:center;
         padding: 0 4px;
         background: #ffffff;
-        font-size: 12px;
+        font-size: 14px;
         color: #b4b4b4;
         min-width: 80px;
         span{

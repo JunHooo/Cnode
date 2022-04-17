@@ -1,7 +1,9 @@
 <template>
 <div class="nav">
     <div class="container">
-      <img src="../assets/cnodejs_light.svg" alt="">
+      <router-link to="/">
+        <img src="../assets/cnodejs_light.svg" alt="">
+      </router-link>
       <form class="reach" >
         <label>
           <input type="text" autocomplete="off"  icon="el-icon-search">

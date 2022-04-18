@@ -80,6 +80,11 @@ name: "Article",
       })
     }
   },
+  watch:{
+    '$route'(){
+      this.getArticle();
+    }
+  },
   beforeMount() {
     this.getArticle()
   },

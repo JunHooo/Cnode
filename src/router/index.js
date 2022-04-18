@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Index from '../views/Index.vue'
 import Article from '@/components/Article'
-import UserInfo from '@/components/UserInfo'
+import UserInfo from '@/components/UserInfo.vue'
 
 Vue.use(Router)
 
@@ -20,8 +20,9 @@ const router =  new Router({
     {
       name: 'UserInfo',
       path: '/userinfo/:name',
-      components:UserInfo
-    }
+      component:UserInfo
+    },
+
   ]
 })
 

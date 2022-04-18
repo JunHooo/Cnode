@@ -11,11 +11,11 @@
       </form>
       <div class="link">
         <span><router-link to="/">首页</router-link></span>
-        <span><router-link to="/HelloWorld">新手入门</router-link></span>
-        <span>API</span>
-        <span>关于</span>
-        <span>注册</span>
-        <span>登录</span>
+        <span><router-link to="/">新手入门</router-link></span>
+        <span><router-link to="/">API</router-link></span>
+        <span><router-link to="/">关于</router-link></span>
+        <span><router-link to="/">注册</router-link></span>
+        <span><router-link to="/">登录</router-link></span>
       </div>
     </div>
 </div>

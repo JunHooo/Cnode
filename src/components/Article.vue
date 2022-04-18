@@ -1,6 +1,7 @@
 <template>
 <div>
     <Header></Header>
+    <SlideBar :tname="name"></SlideBar>
     <div class="content">
       <div class="header">
         <div class="title">
@@ -21,7 +22,7 @@
         <div v-for="(reply,index)  in content.replies" class="replySec" :key="index">
           <div class="replyUp">
             <router-link :to="{
-          name:'user_info',
+          name:'UserInfo',
           params:{
             name:reply.author.loginname
           }
@@ -29,7 +30,7 @@
               <img :src="reply.author.avatar_url" alt="">
             </router-link>
             <router-link :to="{
-          name:'user_info',
+          name:'UserInfo',
           params:{
             name:reply.author.loginname
           }
@@ -54,13 +55,14 @@
 
 <script>
 import Header from '@/components/Header'
+import SlideBar from '@/components/SlideBar'
 export default {
 name: "Article",
-  components: {Header},
+  components: {SlideBar, Header},
   data(){
     return{
       content:{},
-      name:''
+      name:'',
     }
   },
   methods:{

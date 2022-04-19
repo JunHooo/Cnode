@@ -22,6 +22,8 @@ Vue.filter('getType', function (value) {
     value='招聘'
   }else if(value.tab==='ask'){
     value='问答'
+  }else {
+    value ='其他'
   }
   return value
 })

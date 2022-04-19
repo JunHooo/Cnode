@@ -30,29 +30,40 @@
         <span class="time">{{post.last_reply_at | getDate}}</span>
       </li>
     </ul>
+   <Pagination @handleList="handle"></Pagination>
   </div>
 </template>
 
 <script lang="ts">
+import Pagination from './Pagination.vue';
+
 export default {
   name: 'PostList',
+  components: {Pagination},
   data(){
     return{
       postlist:[],
       post:'',
+      pageList:1
     }
   },
   methods:{
     getData(){
         this.$axios.get('https://cnodejs.org/api/v1/topics',{
-          page:1,
-          limit:20,
+          params:{
+            page:this.pageList,
+            limit:20,
+          }
         }).then(res=>{
           this.postlist=res.data.data;
           console.log(this.postlist)
         }).catch(error=>{
           console.log(error);
         })
+    },
+    handle(value){
+      this.pageList=value
+      this.getData()
     }
   },
   beforeMount() {

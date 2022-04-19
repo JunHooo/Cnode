@@ -15,7 +15,7 @@ Vue.filter('getType', function (value) {
     value = '置顶'
   }
   else if (value.good ===true ) {
-    value='精品'
+    value='精华'
   }else if(value.tab==='share'){
     value='分享'
   }else if(value.tab==='job'){

@@ -1,12 +1,12 @@
 <template>
   <div class="main">
     <div class="navbar">
-      <span>全部</span>
-      <span>精华</span>
-      <span>分享</span>
-      <span>问答</span>
-      <span>招聘</span>
-      <span>客户端测试</span>
+      <span  @click="selected" :class="{hit:hit==='全部'}">全部</span>
+      <span  @click="selected" :class="{hit:hit==='精华'}">精华</span>
+      <span  @click="selected" :class="{hit:hit==='分享'}">分享</span>
+      <span  @click="selected" :class="{hit:hit==='问答'}">问答</span>
+      <span  @click="selected" :class="{hit:hit==='招聘'}">招聘</span>
+      <span  @click="selected" :class="{hit:hit==='客户端测试'}">客户端测试</span>
     </div>
     <ul class="postlist">
       <li v-for="(post,index) in postlist" :key="index">
@@ -44,7 +44,9 @@ export default {
     return{
       postlist:[],
       post:'',
-      pageList:1
+      pageList:1,
+      type:'all',
+      hit:false,
     }
   },
   methods:{
@@ -53,10 +55,10 @@ export default {
           params:{
             page:this.pageList,
             limit:20,
+            tab:this.type
           }
         }).then(res=>{
-          this.postlist=res.data.data;
-          console.log(this.postlist)
+            this.postlist=res.data.data;
         }).catch(error=>{
           console.log(error);
         })
@@ -64,11 +66,28 @@ export default {
     handle(value){
       this.pageList=value
       this.getData()
+    },
+    selected(type){
+      this.hit=type.target.innerHTML
+      let value=type.target.innerHTML
+      switch (value){
+        case '分享':this.type='share'
+          break;
+        case '招聘':this.type='job'
+          break;
+        case '精华':this.type='good'
+          break;
+        case '问答':this.type='ask'
+          break;
+        default :this.type='all'
+          break
+      }
+      console.log(this.type);
+      this.getData()
     }
   },
   beforeMount() {
     this.getData()
-
   }
 };
 </script>
@@ -85,9 +104,14 @@ export default {
     padding: 10px;
     background-color: #f6f6f6;
     border-radius: 3px 3px 0 0;
+    .hit{
+      background:#80bd01 ;
+      color:#ffffff;
+    }
     span{
       color:#80bd01;
-      padding: 10px 10px;
+      padding: 2px;
+      margin-right:20px ;
       &:hover{
         color:#005580
       }

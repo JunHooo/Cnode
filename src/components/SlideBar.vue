@@ -97,7 +97,8 @@ export default {
 .autherinfo {
   width: 328px;
   float: right;
-  margin-top: 0;
+  margin-right:40px;
+  margin-top: 20px;
 }
 li{
   padding: 3px 0 ;
@@ -116,7 +117,7 @@ ul a {
 }
 
 .topbar {
-  padding: 10px;
+  padding: 0 10px;
   background-color: #f6f6f6;
   height: 16px;
   font-size: 12px;

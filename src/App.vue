@@ -15,7 +15,7 @@ export default {
 @import "style/reset.css";
   .app{
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
     background: #e1e1e1;
   }
 </style>

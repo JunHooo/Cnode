@@ -106,9 +106,9 @@ name: "Article",
 @import "../style/markdown.css";
     .content{
       background: #ffffff;
-      margin: 20px auto;
+      margin:20px 0 20px 60px;
       min-height: 80vh;
-      width: 90%;
+      width: 68%;
       .header{
         border-bottom:1px solid  #e5e5e5;
         .title{
